@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Phone with Gradient Chart</title>
+
+  <!-- Optional font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Gradient Chart Background -->
+  <canvas id="gradient-chart" aria-hidden="true"></canvas>
+
+  <!-- Phone Frame with Image -->
+  <div class="phone-container" role="img" aria-label="Phone mock with transaction popups">
+    <div class="phone-frame" aria-hidden="true">
+      <img src="https://i.imgur.com/O2Nj2Gt.jpeg" alt="App screenshot inside phone mock" class="phone-screen">
+    </div>
+
+    <!-- Pop-up amounts (use classes for animation delays) -->
+    <div class="popup delay-0" style="top: 10%; left: 5%;">+$120</div>
+    <div class="popup delay-1" style="top: 35%; right: 5%;">+$85</div>
+    <div class="popup delay-2" style="bottom: 20%; left: 15%;">+$200</div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
