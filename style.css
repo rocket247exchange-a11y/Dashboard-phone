@@ -1,0 +1,97 @@
+/* Reset & base */
+:root {
+  --bg: #000;
+  --popup-bg: rgba(255,255,255,0.95);
+  --popup-accent: #4a00e0;
+  --phone-width: 250px;
+  --phone-height: 500px;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: Inter, system-ui, Arial, sans-serif;
+  background: var(--bg);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Canvas full screen for gradient chart (behind content) */
+#gradient-chart {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+/* Phone container centered */
+.phone-container {
+  position: relative;
+  width: var(--phone-width);
+  height: var(--phone-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Metal phone frame */
+.phone-frame {
+  width: 100%;
+  height: 100%;
+  padding: 8px;
+  border-radius: 36px;
+  background: linear-gradient(145deg, #d1d1d1, #888888);
+  box-shadow: inset 0 0 8px #aaa, 0 8px 28px rgba(0,0,0,0.6);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Screen inside phone */
+.phone-screen {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 28px;
+  display: block;
+}
+
+/* Popup amounts */
+.popup {
+  position: absolute;
+  background: var(--popup-bg);
+  color: var(--popup-accent);
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 12px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.45);
+  opacity: 0;
+  transform: translateY(10px);
+  animation: popupAnim 2s ease forwards;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* Delay classes for predictable animation timing */
+.popup.delay-0 { animation-delay: 0s; }
+.popup.delay-1 { animation-delay: 0.5s; }
+.popup.delay-2 { animation-delay: 1s; }
+
+/* Popup keyframes */
+@keyframes popupAnim {
+  0%   { transform: translateY(20px); opacity: 0; }
+  40%  { transform: translateY(-8px); opacity: 1; }
+  100% { transform: translateY(-24px); opacity: 0; }
+}
+
+/* Responsive scaling */
+@media (max-width: 420px) {
+  :root { --phone-width: 200px; --phone-height: 400px; }
+}
+
+/* Respect reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .popup { animation: none; opacity: 1; transform: none; }
+}
